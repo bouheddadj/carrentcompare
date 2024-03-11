@@ -1,0 +1,50 @@
+{
+    "name": "CarRentCompare",
+    "version": "1.0.0",
+    "description": "Description de votre projet",
+    "main": "server.js",
+    "private": true,
+    "scripts": {
+        "start": "node server.js",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "server": "nodemon server.js",
+        "client": "cd client && npm start",
+        "dev": "concurrently \"npm run server\" \"npm run client\""
+    },
+    "dependencies": {
+        "@testing-library/jest-dom": "^5.17.0",
+        "@testing-library/react": "^13.4.0",
+        "@testing-library/user-event": "^13.5.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-scripts": "5.0.1",
+        "web-vitals": "^2.1.4",
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "mongoose": "^5.13.3"
+    },
+    "devDependencies": {
+        "concurrently": "^6.2.2",
+        "nodemon": "^2.0.7"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
+}
