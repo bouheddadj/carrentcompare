@@ -1,25 +1,24 @@
 import React from 'react'
 import { useEffect } from 'react';
 import Navbar from './Navbar';
+import Main from './Main';
 
 
 function App() {
   return (
 
-    <div className='container'>
-        <div className='row'>
-          <div className='col'>
-            <div className='box'></div>
-          </div>
-          <div className='col'>
-            <div className='box'></div>
-          </div>
-          <div className='col'>
-            <div className='box'></div>
-          </div>
-        </div>
+  <div className='container containers-bottom-margin'>
+
+    <div className='row'>
+            <Navbar/>
     </div>
 
+    <div className='row'>
+          <Main/>
+    </div>
+    
+  </div>
+  
   );
 }
 
