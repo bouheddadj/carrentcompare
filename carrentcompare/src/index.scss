@@ -1,0 +1,72 @@
+@import '~bootstrap/scss/bootstrap';
+
+/* This box class is purely used for explaining how the bootstrap grid system works. */
+.box {
+  background-color: lightblue;
+  border: 1px solid blue;
+  min-height: 50px;
+  font-size: 2rem;
+}
+
+body {
+  background-color: #cdcdcd;
+  margin-top: 10px;
+}
+
+.corners {
+  border-radius: 10px;
+}
+
+.containers-bottom-margin{
+  margin-bottom: 10px;
+}
+
+.main-rows-padding{
+  padding: 10px;
+}
+
+.btn-auto {
+  padding-right: 400px; /* Ajustez selon vos besoins */
+}
+
+body {
+  background: url('./background-1.jpg') no-repeat center center fixed; 
+  background-size: cover;
+}
+
+.btn-orange {
+  background-color: $orange-500;
+  border-color: $orange-500;
+  //color: #fff; /* You can change this to whatever color you want the text to be */
+}
+
+.input-orangee {
+  border: 3px solid;
+  border-color: $orange-500;
+}
+
+.input-orange {
+  border: 1px solid;
+  border-color: $orange-500;
+}
+
+.input{
+  border: 1px solid;
+  border-color: $orange-500;
+}
+
+@keyframes pulse {
+  0% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.05);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}

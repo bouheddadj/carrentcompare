@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1155a9bb.chunk.css",
+    "main.js": "/static/js/main.09c5219f.chunk.js",
+    "main.js.map": "/static/js/main.09c5219f.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.5a08893c.js",
+    "runtime-main.js.map": "/static/js/runtime-main.5a08893c.js.map",
+    "static/js/2.e9f09464.chunk.js": "/static/js/2.e9f09464.chunk.js",
+    "static/js/2.e9f09464.chunk.js.map": "/static/js/2.e9f09464.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.a916fb498b1f54c37936149838dfb2e4.js": "/precache-manifest.a916fb498b1f54c37936149838dfb2e4.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.1155a9bb.chunk.css.map": "/static/css/main.1155a9bb.chunk.css.map",
+    "static/js/2.e9f09464.chunk.js.LICENSE.txt": "/static/js/2.e9f09464.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/static/media/background-1.cc3d81ec.jpg",
+    "static/media/l.png": "/static/media/l.fbc3606d.png",
+    "static/media/m.png": "/static/media/m.9eeaa490.png",
+    "static/media/pastille-background.jpeg": "/static/media/pastille-background.09ef05e6.jpeg",
+    "static/media/s.png": "/static/media/s.6f3d7b9d.png",
+    "static/media/xl.png": "/static/media/xl.c4048451.png",
+    "static/media/xxl.png": "/static/media/xxl.abcbb8de.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5a08893c.js",
+    "static/js/2.e9f09464.chunk.js",
+    "static/css/main.1155a9bb.chunk.css",
+    "static/js/main.09c5219f.chunk.js"
+  ]
+}
