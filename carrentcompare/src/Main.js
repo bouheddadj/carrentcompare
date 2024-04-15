@@ -8,8 +8,10 @@ const Main = (props) => {
 
         const [time1, setTime1] = useState(null);
         const [time2, setTime2] = useState(null);
+        const [date1, setDate1] = useState(null);
+        const [date2, setDate2] = useState(null);
         const [duree, setDuree] = useState(null);
-        const [distance, setDistance] = useState(null);
+        const [distance, setDistance] = useState(0);
         const [results, setResults] = useState([]);
 
         const inputRef = useRef();
@@ -69,10 +71,17 @@ const Main = (props) => {
             const showButton = document.querySelector('#showButton');
 
             function getTimeFromDate(dateString) {
+                //console.log('dateString', dateString);  // Add this line
                 const date = new Date(dateString);
                 const hours = date.getHours().toString().padStart(2, '0');
                 const minutes = date.getMinutes().toString().padStart(2, '0');
                 return `${hours}:${minutes}`;
+            }
+
+            function getDateFromTime(dateTimeString) {
+                const date = new Date(dateTimeString);
+                const dateString = date.toISOString().split('T')[0];
+                return dateString;
             }
 
             function handleInput1Change() {
@@ -80,8 +89,19 @@ const Main = (props) => {
                 setTime1(getTimeFromDate(picker1.dates.lastPicked));
                 //console.log('last selected', picker2.dates.lastPicked); 
                 setTime2(getTimeFromDate(picker2.dates.lastPicked));
+
+
+
+                setDate1(getDateFromTime(picker1.dates.lastPicked));
+                setDate2(getDateFromTime(picker2.dates.lastPicked));
+
+
+
+
                 setDistance(input3.value);  // Get the value of the distance input
                 //console.log('Distance:', distance);
+                //console.log("LOOK FUCKING HERE 1: ", time1, time2);
+                //console.log("LOOK FUCKING HERE 2: ", date1, date2);
 
             }
 
@@ -103,36 +123,39 @@ const Main = (props) => {
                 input3.removeEventListener("change", handleInput3Change);
             };
             */
+
         });
 
         useEffect(() => {
-                if (time1 && time2 && distance) {
-                        function getDifferenceInMinutes(time1, time2) {
-                                const [hours1, minutes1] = time1.split(':').map(Number);
-                                const [hours2, minutes2] = time2.split(':').map(Number);
 
-                                const totalMinutes1 = hours1 * 60 + minutes1;
-                                const totalMinutes2 = hours2 * 60 + minutes2;
+                if (time1 && time2 && date1 && date2 && distance) {
+                        function getDifferenceInMinutes(date1, time1, date2, time2) {
+                                //console.log("Look at time1", time1);
+                                //console.log("Look at time2", time2);
+                                //console.log("Look at date1", date1);
+                                //console.log("Look at date2", date2);
 
-                                const diff = Math.abs(totalMinutes1 - totalMinutes2);
-
-                                // Si la différence est supérieure à 12 heures (720 minutes), 
-                                // alors nous devons calculer la différence avec le jour suivant.
-                                return diff > 720 ? 1440 - diff : diff;
-                        }
+                                const dateTime1 = new Date(`${date1}T${time1}:00`);
+                                const dateTime2 = new Date(`${date2}T${time2}:00`);
+                            
+                                const diffInMilliseconds = Math.abs(dateTime2 - dateTime1);
+                                const diffInMinutes = diffInMilliseconds / (1000 * 60);
+                            
+                                return diffInMinutes;
+                            }
                         //setDuree(getDifferenceInMinutes(time1, time2));
                 //console.log("La différence: ", getDifferenceInMinutes(time1, time2));
                 //console.log("Time1: ", time1);
                 //console.log("Time2: ", time2);
 
-                const duree = getDifferenceInMinutes(time1, time2);
-                const date1 = new Date(`1970-01-01T${time1}:00`);  // Convert time1 to a Date object
-                const date2 = new Date(`1970-01-01T${time2}:00`);  // Convert time2 to a Date object
+                const duree = getDifferenceInMinutes(date1, time1, date2, time2);
+                const dat1 = new Date(`1970-01-01T${time1}:00`);  // Convert time1 to a Date object
+                const dat2 = new Date(`1970-01-01T${time2}:00`);  // Convert time2 to a Date object
                 const functions = [calculateS, calculateM, calculateL, calculateXL, calculateXXL];
                 const functionsleo = [calculatecitadinsetpetitutilitaire, calculateutilitaire6m3];
-                //console.log(duree,false,distance,date1,date2);
-                const resultsWithoutSubscription = functions.map(func => parseFloat(func(duree, false, distance, date1, date2).toFixed(2)));
-                const resultsWithSubscription = functions.map(func => parseFloat(func(duree, true, distance, date1, date2).toFixed(2)));
+                //console.log(duree,false,distance,dat1,dat2);
+                const resultsWithoutSubscription = functions.map(func => parseFloat(func(duree, false, distance, dat1, dat2).toFixed(2)));
+                const resultsWithSubscription = functions.map(func => parseFloat(func(duree, true, distance, dat1, dat2).toFixed(2)));
                 const leocitadinesanspreres = functionsleo.map(func => parseFloat(func(duree, distance, false).toFixed(2)));
                 const leocitadineavecpreres = functionsleo.map(func => parseFloat(func(duree, distance, true).toFixed(2)));
 
@@ -148,7 +171,7 @@ const Main = (props) => {
                 //console.log("Time1: ", time1);
                 //console.log("Time2: ", time2);
                 //console.log("Distance: ", distance);
-        }, [time1, time2, distance]);
+        }, [time1, time2, date1, date2, distance]);
 
         /*
         useEffect(() => {
@@ -233,8 +256,7 @@ const Main = (props) => {
                                                 <div className='bg-light'>
                                                         <div className='d-flex flex-row gap-2'>
                                                                 <button className="btn btn-outline-dark rounded-3 bi bi-ev-front btn-orange" type="submit"></button>
-                                                                <input className="form-control me-2 bg-light text-dark input rounded-3" type="text" name="distance" />
-                                                                <button id="showButton" className="btn btn-outline-dark rounded-3 btn-orange text-dark fw-bold" type="submit" onClick={props.onButtonClick}>Afficher</button>
+                                                                <input className="form-control me-2 bg-light text-dark input rounded-3" type="text" name="distance" value={distance} onChange={e => setDistance(e.target.value)} />                                                                <button id="showButton" className="btn btn-outline-dark rounded-3 btn-orange text-dark fw-bold" type="submit" onClick={props.onButtonClick}>Afficher</button>
                                                         </div>
                                                 </div> 
                                         </div>  

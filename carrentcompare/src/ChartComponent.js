@@ -171,7 +171,7 @@ const ChartComponent = () => {
     };
 
     return (
-        <div className='container'>
+        <div className='container mt-5'>
             <div className='d-flex flex-column bg-light gap-4 p-3 rounded-4 input-orangee'>
                 <h1>Prix de location en fonction de la distance : </h1>
                 <div style={{ width: '800px', height: '600px' }}>

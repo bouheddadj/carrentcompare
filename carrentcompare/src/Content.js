@@ -35,10 +35,10 @@ const Content = (props) => {
         return <div><h2>Pas de résultat disponible</h2></div>;
         console.log("No content!");
     }
-    const minPriceWithoutSubscription = props.results && props.results.withoutSubscription ? Math.min(...props.results.withoutSubscription) : null;
-    const minPriceWithSubscription = props.results && props.results.withSubscription ? Math.min(...props.results.withSubscription) : null;
-    const minPriceWithoutSubscriptionleo = props.results && props.results.withoutSubscriptionleo ? Math.min(...props.results.withoutSubscriptionleo) : null;
-    const minPriceWithtSubscriptionleo = props.results && props.results.withtSubscriptionleo ? Math.min(...props.results.withtSubscriptionleo) : null;
+    const minPriceWithoutSubscription = props.results && Array.isArray(props.results.withoutSubscription) ? Math.min(...props.results.withoutSubscription) : Infinity;
+    const minPriceWithSubscription = props.results && Array.isArray(props.results.withSubscription) ? Math.min(...props.results.withSubscription) : Infinity;
+    const minPriceWithoutSubscriptionleo = props.results && Array.isArray(props.results.withoutSubscriptionleo) ? Math.min(...props.results.withoutSubscriptionleo) : Infinity;
+    const minPriceWithtSubscriptionleo = props.results && Array.isArray(props.results.withtSubscriptionleo) ? Math.min(...props.results.withtSubscriptionleo) : Infinity;
 
     return (
         <div className='container'>
