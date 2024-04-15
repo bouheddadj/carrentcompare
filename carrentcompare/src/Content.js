@@ -2,6 +2,7 @@ import React from 'react';
 import Pastille from './Pastille';
 import { useEffect } from 'react';
 import pastilleBackground from './pastille-background.jpeg';
+import ChartComponent from './ChartComponent'
 import s from './s.png';
 import m from './m.png';
 import l from './l.png';
@@ -26,10 +27,18 @@ const bagsleo = ["2", "3"];
 
 
 const Content = (props) => {
-    const minPriceWithoutSubscription = Math.min(...props.results.withoutSubscription);
-    const minPriceWithSubscription = Math.min(...props.results.withSubscription);
-    const minPriceWithoutSubscriptionleo = Math.min(...props.results.withoutSubscriptionleo);
-    const minPriceWithtSubscriptionleo = Math.min(...props.results.withtSubscriptionleo);
+    // console.log(`CONTENT =`);
+    // console.log(props);
+
+    // Vérifier si props.results existe
+    if (!props.results) {
+        return <div><h2>Pas de résultat disponible</h2></div>;
+        console.log("No content!");
+    }
+    const minPriceWithoutSubscription = props.results && props.results.withoutSubscription ? Math.min(...props.results.withoutSubscription) : null;
+    const minPriceWithSubscription = props.results && props.results.withSubscription ? Math.min(...props.results.withSubscription) : null;
+    const minPriceWithoutSubscriptionleo = props.results && props.results.withoutSubscriptionleo ? Math.min(...props.results.withoutSubscriptionleo) : null;
+    const minPriceWithtSubscriptionleo = props.results && props.results.withtSubscriptionleo ? Math.min(...props.results.withtSubscriptionleo) : null;
 
     return (
         <div className='container'>
@@ -46,6 +55,10 @@ const Content = (props) => {
                 {props.results.withtSubscriptionleo && props.results.withtSubscriptionleo.map((result, index) => (
                     <Pastille key={index} price={result} image={imagesleo[index]} per={pers[index]} bag={bagsleo[index]} type={typesleo[index]} voiture={voituresleo[index]} soc={societesleo[index]} abon={preres[1]} special={result === minPriceWithtSubscriptionleo}/>
                 ))}
+            </div>
+
+            <div>
+                <ChartComponent/>
             </div>
         </div>
     );

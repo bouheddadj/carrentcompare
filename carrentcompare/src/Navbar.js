@@ -4,7 +4,7 @@ const Navbar = () => {
 
             <nav className="navbar navbar-expand bg-transparent navbar-transparent">
                 <div className='container'>
-                    <a href="#" className="navbar-brand text-light fs-5 fw-bold">Car Rent Compare</a>
+                    <a href="/" className="navbar-brand text-light fs-5 fw-bold">Car Rent Compare</a>
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
                             <a href="/Home" className="nav-link active text-light">Home</a>

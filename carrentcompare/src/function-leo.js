@@ -57,7 +57,7 @@ export function calculatecitadinsetpetitutilitaire(duree,distance,preresevation)
     let prixmin = Math.floor(minutes/30) * leo.leo[0].prix[0]['30min'] + Math.floor(minutes%30) * leo.leo[0].prix[0]['1min'];
     let prixheure = Math.floor(heures/9) * leo.leo[0].prix[0]['9h'] + Math.floor((heures%9)/6) * leo.leo[0].prix[0]['6h'] + Math.floor(((heures%9)%6)/3) * leo.leo[0].prix[0]['3h'] + Math.floor((((heures%9)%6)%3)/2) * leo.leo[0].prix[0]['2h'] + Math.floor((((heures%9)%6)%3)%2) * leo.leo[0].prix[0]['1h'];
     let prixjour = Math.floor(jours/14) * leo.leo[0].prix[0]['14j'] + Math.floor((jours%14)/13) * leo.leo[0].prix[0]['13j'] + Math.floor(((jours%14)%13)/12) * leo.leo[0].prix[0]['12j'] + Math.floor((((jours%14)%13)%12)/11) * leo.leo[0].prix[0]['11j'] + Math.floor(((((jours%14)%13)%12)%11)/10) * leo.leo[0].prix[0]['10j'] + Math.floor((((((jours%14)%13)%12)%11)%10)/9) * leo.leo[0].prix[0]['9j'] + Math.floor(((((((jours%14)%13)%12)%11)%10)%9)/8) * leo.leo[0].prix[0]['8j'] + Math.floor((((((((jours%14)%13)%12)%11)%10)%9)%8)/7) * leo.leo[0].prix[0]['7j'] + Math.floor(((((((((jours%14)%13)%12)%11)%10)%9)%8)%7)/6) * leo.leo[0].prix[0]['6j'] + Math.floor((((((((((jours%14)%13)%12)%11)%10)%9)%8)%7)%6)/5) * leo.leo[0].prix[0]['5j'] + Math.floor(((((((((((jours%14)%13)%12)%11)%10)%9)%8)%7)%6)%5)/4) * leo.leo[0].prix[0]['4j'] + Math.floor((((((((((((jours%14)%13)%12)%11)%10)%9)%8)%7)%6)%5)%4)/3) * leo.leo[0].prix[0]['3j'] + Math.floor(((((((((((((jours%14)%13)%12)%11)%10)%9)%8)%7)%6)%5)%4)%3)/2) * leo.leo[0].prix[0]['2j'] + Math.floor((((((((((((((jours%14)%13)%12)%11)%10)%9)%8)%7)%6)%5)%4)%3)%2) * leo.leo[0].prix[0]['1j']);
-    console.log(prixmin , prixheure , prixjour);
+    // console.log(prixmin , prixheure , prixjour);
     
 
     distancepaye=distance-distancecadeau;
@@ -124,11 +124,11 @@ export function calculateutilitaire6m3(duree,distance,preresevation){
     let resteJours = duree % 1440; 
     let heures = Math.floor(resteJours / 60); 
     let minutes = resteJours % 60;
-    console.log(jours,heures,minutes);
+    // console.log(jours,heures,minutes);
     let prixmin = (Math.floor((heures%6)%3)*60 + minutes) * leo.leo[1].cars[0].prix[0]['1min'];
     let prixheure = Math.floor(heures/6) * leo.leo[1].cars[0].prix[0]['6h'] + Math.floor((heures%6)/3) * leo.leo[1].cars[0].prix[0]['3h'] 
     let prixjour = Math.floor(jours/14) * leo.leo[1].cars[0].prix[0]['14j'] +  Math.floor((jours%14)/13) * leo.leo[1].cars[0].prix[0]['13j'] +  Math.floor(((jours%14)%13)/12) * leo.leo[1].cars[0].prix[0]['12j'] +  Math.floor((((jours%14)%13)%12)/11) * leo.leo[1].cars[0].prix[0]['11j'] + Math.floor(((((jours%14)%13)%12)%11)/10) * leo.leo[1].cars[0].prix[0]['10j'] + Math.floor((((((jours%14)%13)%12)%11)%10)/9) * leo.leo[1].cars[0].prix[0]['9j'] + Math.floor(((((((jours%14)%13)%12)%11)%10)%9)/8) * leo.leo[1].cars[0].prix[0]['8j'] + Math.floor((((((((jours%14)%13)%12)%11)%10)%9)%8)/7) * leo.leo[1].cars[0].prix[0]['7j'] + Math.floor(((((((((jours%14)%13)%12)%11)%10)%9)%8)%7)/6) * leo.leo[1].cars[0].prix[0]['6j'] + Math.floor((((((((((jours%14)%13)%12)%11)%10)%9)%8)%7)%6)/5) * leo.leo[1].cars[0].prix[0]['5j'] + Math.floor(((((((((((jours%14)%13)%12)%11)%10)%9)%8)%7)%6)%5)/4) * leo.leo[1].cars[0].prix[0]['4j'] + Math.floor((((((((((((jours%14)%13)%12)%11)%10)%9)%8)%7)%6)%5)%4)/3) * leo.leo[1].cars[0].prix[0]['3j'] + Math.floor(((((((((((((jours%14)%13)%12)%11)%10)%9)%8)%7)%6)%5)%4)%3)/2) * leo.leo[1].cars[0].prix[0]['2j'] + (((((((((((((jours%14)%13)%12)%11)%10)%9)%8)%7)%6)%5)%4)%3)%2 * leo.leo[1].cars[0].prix[0]['1j']);
-    console.log(prixmin , prixheure , prixjour);
+    // console.log(prixmin , prixheure , prixjour);
     if(prixmin > leo.leo[1].cars[0].prix[0]['3h']){
         prixmin=0;
         prixheure=+leo.leo[1].cars[0].prix[0]['3h'];
@@ -141,7 +141,7 @@ export function calculateutilitaire6m3(duree,distance,preresevation){
     if(distancepaye < 0){
         distancepaye=0;
     }
-    console.log(prixmin , prixheure , prixjour);
+    // console.log(prixmin , prixheure , prixjour);
     if(!preresevation){
         return 1+prixmin + prixheure + prixjour + distancepaye*0.30;
     }
@@ -152,7 +152,7 @@ export function calculateutilitaire6m3(duree,distance,preresevation){
 
 //
 
-function calculateTesla(duree,distance,preresevation ){
+export function calculateTesla(duree,distance,preresevation ){
     if(duree > 20160){
         return "you must contact us";
     }
@@ -181,7 +181,7 @@ function calculateTesla(duree,distance,preresevation ){
     let resteJours = duree % 1440; 
     let heures = Math.floor(resteJours / 60 / 4); 
     let minutes = resteJours % (60 * 4); 
-    console.log(jours,heures,minutes);
+    // console.log(jours,heures,minutes);
     let prixmin = minutes * leo.leo[2].cars[0].prix[0]['1min'];
     let prixheure = heures * leo.leo[2].cars[0].prix[0]['4h'];
     let prixjour = Math.floor(jours/7) * leo.leo[2].cars[0].prix[0]['7j'] + Math.floor(jours%7)/6 * leo.leo[2].cars[0].prix[0]['6j'] + Math.floor((jours%7)%6)/5 * leo.leo[2].cars[0].prix[0]['5j'] + Math.floor(((jours%7)%6)%5)/4 * leo.leo[2].cars[0].prix[0]['4j'] + Math.floor((((jours%7)%6)%5)%4)/3 * leo.leo[2].cars[0].prix[0]['3j'] + Math.floor(((((jours%7)%6)%5)%4)%3)/2 * leo.leo[2].cars[0].prix[0]['2j'] + Math.floor((((((jours%7)%6)%5)%4)%3)%2) * leo.leo[2].cars[0].prix[0]['1j'];
@@ -198,10 +198,10 @@ function calculateTesla(duree,distance,preresevation ){
     if(distancepaye < 0){
         distancepaye=0;
     }
-    console.log(prixmin , prixheure , prixjour);
+    // console.log(prixmin , prixheure , prixjour);
     if(!preresevation){
         return 1+prixmin + prixheure + prixjour + distancepaye*0.40;
     }
     return 11+prixmin + prixheure + prixjour + distancepaye*0.40;
 } 
-console.log(calculateTesla(9*60+15,20,false));
+// // console.log(calculateTesla(9*60+15,20,false));

@@ -70,9 +70,9 @@ export function calculateS(duree,abonnement,distance,heuredepart,heurearrivee){
     let week = Math.floor(duree / 10080);
     let  day = Math.floor((duree % 10080) / 1440);
     let  hour = Math.floor(((duree % 10080) % 1440)/60);
-    console.log(calculateHoursInInterval(heuredepart.getHours(),heurearrivee.getHours()));
+    // // console.log(calculateHoursInInterval(heuredepart.getHours(),heurearrivee.getHours()));
     hour = hour - calculateHoursInInterval(heuredepart.getHours(),heurearrivee.getHours());
-    console.log(hour);
+    // // console.log(hour);
     let  min = Math.floor(((duree % 10080) % 1440)%60);
     let prixdureesansab;
     let prixdureeab;
@@ -83,7 +83,7 @@ export function calculateS(duree,abonnement,distance,heuredepart,heurearrivee){
         let prixweekabonne=citi.citiz[0]['avec abo'][0].weekly['$numberInt']*week;
         let prixdailyabonne=citi.citiz[0]['avec abo'][0].daily['$numberInt']*day;
         let prixhourlyabonne=citi.citiz[0]['avec abo'][0].hourly['$numberDouble']*hour;
-        console.log(prixdailyabonne);
+        // // console.log(prixdailyabonne);
         let prixminabonne=citi.citiz[0]['avec abo'][0].hourly['$numberDouble']/60*min;
         if(prixhourlyabonne > citi.citiz[0]['avec abo'][0].daily['$numberInt']){
             prixhourlyabonne=0;
@@ -119,7 +119,7 @@ export function calculateS(duree,abonnement,distance,heuredepart,heurearrivee){
     }
     else if(abonnement && distance > 100){
         distance = distance - 100;
-        console.log(prixdureesansab);
+        // console.log(prixdureesansab);
         return (prixdureeab + distance * prixkmover100 + 100 * prixkmunder100);
     }
     else if(!abonnement && distance <= 100){
@@ -127,7 +127,7 @@ export function calculateS(duree,abonnement,distance,heuredepart,heurearrivee){
     }
     else{
         distance = distance - 100;
-        console.log(distance * prixkmover100 );
+        // console.log(distance * prixkmover100 );
         return (prixdureesansab + distance*prixkmover100 + 100 * prixkmunder100);
     }
     
@@ -168,11 +168,11 @@ export function calculateM(duree,abonnement,distance,heuredepart,heurearrivee){
     let week = Math.floor(duree / 10080);
     let  day = Math.floor((duree % 10080) / 1440);
     let  hour = Math.floor(((duree % 10080) % 1440)/60);
-    console.log(calculateHoursInInterval(heuredepart.getHours(),heurearrivee.getHours()));
+    // console.log(calculateHoursInInterval(heuredepart.getHours(),heurearrivee.getHours()));
     hour = hour - calculateHoursInInterval(heuredepart.getHours(),heurearrivee.getHours());
-    console.log(hour);
+    // console.log(hour);
     let  min = Math.floor(((duree % 10080) % 1440)%60);
-    console.log(week,day,hour,min);
+    // console.log(week,day,hour,min);
     let prixdureesansab;
     let prixdureeab;
     if(duree < 60){
@@ -183,7 +183,7 @@ export function calculateM(duree,abonnement,distance,heuredepart,heurearrivee){
         let prixdailyabonne=citi.citiz[0]['avec abo'][1].daily['$numberInt']*day;
         let prixhourlyabonne=citi.citiz[0]['avec abo'][1].hourly['$numberDouble']*hour;
         let prixminabonne=citi.citiz[0]['avec abo'][1].hourly['$numberDouble']/60*min;
-        console.log(prixhourlyabonne,prixdailyabonne,prixweekabonne,prixminabonne);
+        // console.log(prixhourlyabonne,prixdailyabonne,prixweekabonne,prixminabonne);
         if(prixhourlyabonne > citi.citiz[0]['avec abo'][1].daily['$numberInt']){
             prixhourlyabonne=0;
             prixdailyabonne=(day+1)*citi.citiz[0]['avec abo'][1].daily['$numberInt'];
@@ -211,14 +211,14 @@ export function calculateM(duree,abonnement,distance,heuredepart,heurearrivee){
             prixweeknonabonne=(week+1)*citi.citiz[1]['sans abo'][1].weekly['$numberInt'];
         }
         prixdureesansab = (prixweeknonabonne + prixdailynonabonne + prixhourlynonabonne + prixminnonabonne);
-        console.log(prixdailynonabonne,prixhourlynonabonne);
+        // console.log(prixdailynonabonne,prixhourlynonabonne);
     }
     if(abonnement && distance <= 100){
         return (prixdureeab + distance*prixkmunder100);
     }
     else if(abonnement && distance > 100){
         distance = distance - 100;
-        console.log(prixdureesansab);
+        // console.log(prixdureesansab);
         return (prixdureeab + distance * prixkmover100 + 100 * prixkmunder100);
     }
     else if(!abonnement && distance <= 100){
@@ -226,7 +226,7 @@ export function calculateM(duree,abonnement,distance,heuredepart,heurearrivee){
     }
     else{
         distance = distance - 100;
-        console.log(distance * prixkmover100 );
+        // console.log(distance * prixkmover100 );
         return (prixdureesansab + distance*prixkmover100 + 100 * prixkmunder100);
     }
 }  
@@ -263,11 +263,11 @@ export function calculateL(duree,abonnement,distance,heuredepart,heurearrivee){
     let week = Math.floor(duree / 10080);
     let  day = Math.floor((duree % 10080) / 1440);
     let  hour = Math.floor(((duree % 10080) % 1440)/60);
-    console.log(calculateHoursInInterval(heuredepart.getHours(),heurearrivee.getHours()));
+    // console.log(calculateHoursInInterval(heuredepart.getHours(),heurearrivee.getHours()));
     hour = hour - calculateHoursInInterval(heuredepart.getHours(),heurearrivee.getHours());
-    console.log(hour);
+    // console.log(hour);
     let  min = Math.floor(((duree % 10080) % 1440)%60);
-    console.log(week,day,hour,min);
+    // console.log(week,day,hour,min);
     let prixdureesansab;
     let prixdureeab;
     if(duree < 60){
@@ -278,7 +278,7 @@ export function calculateL(duree,abonnement,distance,heuredepart,heurearrivee){
         let prixdailyabonne=citi.citiz[0]['avec abo'][2].daily['$numberInt']*day;
         let prixhourlyabonne=citi.citiz[0]['avec abo'][2].hourly['$numberDouble']*hour;
         let prixminabonne=citi.citiz[0]['avec abo'][2].hourly['$numberDouble']/60*min;
-        console.log(prixhourlyabonne,prixdailyabonne,prixweekabonne,prixminabonne);
+        // console.log(prixhourlyabonne,prixdailyabonne,prixweekabonne,prixminabonne);
         if(prixhourlyabonne > citi.citiz[0]['avec abo'][2].daily['$numberInt']){
             prixhourlyabonne=0;
             prixdailyabonne=(day+1)*citi.citiz[0]['avec abo'][2].daily['$numberInt'];
@@ -306,14 +306,14 @@ export function calculateL(duree,abonnement,distance,heuredepart,heurearrivee){
             prixweeknonabonne=(week+1)*citi.citiz[1]['sans abo'][2].weekly['$numberInt'];
         }
         prixdureesansab = (prixweeknonabonne + prixdailynonabonne + prixhourlynonabonne + prixminnonabonne);
-        console.log(prixdailynonabonne,prixhourlynonabonne);
+        // console.log(prixdailynonabonne,prixhourlynonabonne);
     }
     if(abonnement && distance <= 100){
         return (prixdureeab + distance*prixkmunder100);
     }
     else if(abonnement && distance > 100){
         distance = distance - 100;
-        console.log(prixdureesansab);
+        // console.log(prixdureesansab);
         return (prixdureeab + distance * prixkmover100 + 100 * prixkmunder100);
     }
     else if(!abonnement && distance <= 100){
@@ -321,7 +321,7 @@ export function calculateL(duree,abonnement,distance,heuredepart,heurearrivee){
     }
     else{
         distance = distance - 100;
-        console.log(distance * prixkmover100 );
+        // console.log(distance * prixkmover100 );
         return (prixdureesansab + distance*prixkmover100 + 100 * prixkmunder100);
     }
 
@@ -360,11 +360,11 @@ export function calculateXL(duree,abonnement,distance,heuredepart,heurearrivee){
     let week = Math.floor(duree / 10080);
     let  day = Math.floor((duree % 10080) / 1440);
     let  hour = Math.floor(((duree % 10080) % 1440)/60);
-    console.log(calculateHoursInInterval(heuredepart.getHours(),heurearrivee.getHours()));
+    // console.log(calculateHoursInInterval(heuredepart.getHours(),heurearrivee.getHours()));
     hour = hour - calculateHoursInInterval(heuredepart.getHours(),heurearrivee.getHours());
-    console.log(hour);   
+    // console.log(hour);   
     let  min = Math.floor(((duree % 10080) % 1440)%60);
-    console.log(week,day,hour,min);
+    // console.log(week,day,hour,min);
     let prixdureesansab;
     let prixdureeab;
 
@@ -376,7 +376,7 @@ export function calculateXL(duree,abonnement,distance,heuredepart,heurearrivee){
         let prixdailyabonne=citi.citiz[0]['avec abo'][3].daily['$numberInt']*day;
         let prixhourlyabonne=citi.citiz[0]['avec abo'][3].hourly['$numberInt']*hour;
         let prixminabonne=citi.citiz[0]['avec abo'][3].hourly['$numberInt']/60*min;
-        console.log(prixhourlyabonne,prixdailyabonne,prixweekabonne,prixminabonne);
+        // console.log(prixhourlyabonne,prixdailyabonne,prixweekabonne,prixminabonne);
         if(prixhourlyabonne > citi.citiz[0]['avec abo'][3].daily['$numberInt']){
             prixhourlyabonne=0;
             prixdailyabonne=(day+1)*citi.citiz[0]['avec abo'][3].daily['$numberInt'];
@@ -404,14 +404,14 @@ export function calculateXL(duree,abonnement,distance,heuredepart,heurearrivee){
             prixweeknonabonne=(week+1)*citi.citiz[1]['sans abo'][3].weekly['$numberInt'];
         }
         prixdureesansab = (prixweeknonabonne + prixdailynonabonne + prixhourlynonabonne + prixminnonabonne);
-        console.log(prixdailynonabonne,prixhourlynonabonne);
+        // console.log(prixdailynonabonne,prixhourlynonabonne);
     }
     if(abonnement && distance <= 100){
         return (prixdureeab + distance*prixkmunder100);
     }
     else if(abonnement && distance > 100){
         distance = distance - 100;
-        console.log(prixdureesansab);
+        // console.log(prixdureesansab);
         return (prixdureeab + distance * prixkmover100 + 100 * prixkmunder100);
     }
     else if(!abonnement && distance <= 100){
@@ -419,7 +419,7 @@ export function calculateXL(duree,abonnement,distance,heuredepart,heurearrivee){
     }
     else{
         distance = distance - 100;
-        console.log(distance * prixkmover100 );
+        // console.log(distance * prixkmover100 );
         return (prixdureesansab + distance*prixkmover100 + 100 * prixkmunder100);
     }
 
@@ -457,11 +457,11 @@ export function calculateXXL(duree,abonnement,distance,heuredepart,heurearrivee)
     let week = Math.floor(duree / 10080);
     let  day = Math.floor((duree % 10080) / 1440);
     let  hour = Math.floor(((duree % 10080) % 1440)/60);
-    console.log(calculateHoursInInterval(heuredepart.getHours(),heurearrivee.getHours()));
+    // console.log(calculateHoursInInterval(heuredepart.getHours(),heurearrivee.getHours()));
     hour = hour - calculateHoursInInterval(heuredepart.getHours(),heurearrivee.getHours());
-    console.log(hour);
+    // console.log(hour);
     let  min = Math.floor(((duree % 10080) % 1440)%60);
-    console.log(week,day,hour,min);
+    // console.log(week,day,hour,min);
     let prixdureesansab;
     let prixdureeab;
 
@@ -473,7 +473,7 @@ export function calculateXXL(duree,abonnement,distance,heuredepart,heurearrivee)
         let prixdailyabonne=citi.citiz[0]['avec abo'][4].daily['$numberInt']*day;
         let prixhourlyabonne=citi.citiz[0]['avec abo'][4].hourly['$numberDouble']*hour;
         let prixminabonne=citi.citiz[0]['avec abo'][4].hourly['$numberDouble']/60*min;
-        console.log(prixhourlyabonne,prixdailyabonne,prixweekabonne,prixminabonne);
+        // console.log(prixhourlyabonne,prixdailyabonne,prixweekabonne,prixminabonne);
         if(prixhourlyabonne > citi.citiz[0]['avec abo'][4].daily['$numberInt']){
             prixhourlyabonne=0;
             prixdailyabonne=(day+1)*citi.citiz[0]['avec abo'][4].daily['$numberInt'];
@@ -501,14 +501,14 @@ export function calculateXXL(duree,abonnement,distance,heuredepart,heurearrivee)
             prixweeknonabonne=(week+1)*citi.citiz[1]['sans abo'][4].weekly['$numberInt'];
         }
         prixdureesansab = (prixweeknonabonne + prixdailynonabonne + prixhourlynonabonne + prixminnonabonne);
-        console.log(prixdailynonabonne,prixhourlynonabonne);
+        // console.log(prixdailynonabonne,prixhourlynonabonne);
     }
     if(abonnement && distance <= 100){
         return (prixdureeab + distance*prixkmunder100);
     }
     else if(abonnement && distance > 100){
         distance = distance - 100;
-        console.log(prixdureesansab);
+        // console.log(prixdureesansab);
         return (prixdureeab + distance * prixkmover100 + 100 * prixkmunder100);
     }
     else if(!abonnement && distance <= 100){
@@ -516,7 +516,7 @@ export function calculateXXL(duree,abonnement,distance,heuredepart,heurearrivee)
     }
     else{
         distance = distance - 100;
-        console.log(distance * prixkmover100 );
+        // console.log(distance * prixkmover100 );
         return (prixdureesansab + distance*prixkmover100 + 100 * prixkmunder100);
     }
 
