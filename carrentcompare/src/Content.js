@@ -58,7 +58,7 @@ const Content = (props) => {
             </div>
 
             <div>
-                <ChartComponent/>
+                {/* <ChartComponent/> */}
             </div>
         </div>
     );
