@@ -47,6 +47,11 @@ const ChartComponent = () => {
     const [distance, setDistance] = useState(10);
     const chartRef = useRef(null);
 
+    // Deux états (bool) pour l'abonement et préresérvation
+    const [withSubscription, setWithSubscription] = useState(false);
+    const [withPreReservation, setWithPreReservation] = useState(false);
+
+
     useEffect(() => {
         if (chartRef.current !== null) {
             chartRef.current.destroy(); // Détruire le graphique existant
@@ -105,42 +110,42 @@ const ChartComponent = () => {
         switch (carSize) {
             case 'S':
                 pricesByCarType = {
-                    'véhicule S': durations.map(duration => citiz.calculateS(duration, false, distance, heureDepart, heureArrivee)),
-                    'véhicule citadin': durations.map(duration => leo.calculatecitadinsetpetitutilitaire(duration, distance, false)),
+                    'véhicule S': durations.map(duration => citiz.calculateS(duration, withSubscription, distance, heureDepart, heureArrivee)),
+                    'véhicule citadin': durations.map(duration => leo.calculatecitadinsetpetitutilitaire(duration, distance, withPreReservation)),
                 };
                 break;
             case 'M':
                 pricesByCarType = {
-                    'véhicule M': durations.map(duration => citiz.calculateM(duration, false, distance, heureDepart, heureArrivee)),
-                    'véhicule citadin': durations.map(duration => leo.calculatecitadinsetpetitutilitaire(duration, distance, false)),
+                    'véhicule M': durations.map(duration => citiz.calculateM(duration, withSubscription, distance, heureDepart, heureArrivee)),
+                    'véhicule citadin': durations.map(duration => leo.calculatecitadinsetpetitutilitaire(duration, distance, withPreReservation)),
                 };
                 break;
             case 'L':
                 pricesByCarType = {
-                    'véhicule L': durations.map(duration => citiz.calculateL(duration, false, distance, heureDepart, heureArrivee)),
-                    'véhicule citadin': durations.map(duration => leo.calculatecitadinsetpetitutilitaire(duration, distance, false)),
+                    'véhicule L': durations.map(duration => citiz.calculateL(duration, withSubscription, distance, heureDepart, heureArrivee)),
+                    'véhicule citadin': durations.map(duration => leo.calculatecitadinsetpetitutilitaire(duration, distance, withPreReservation)),
                 };
                 break;
             case 'XL':
                 pricesByCarType = {
-                    'véhicule XL': durations.map(duration => citiz.calculateXL(duration, false, distance, heureDepart, heureArrivee)),
-                    'véhicule utilitaire': durations.map(duration => leo.calculateutilitaire6m3(duration, distance, false)),
+                    'véhicule XL': durations.map(duration => citiz.calculateXL(duration, withSubscription, distance, heureDepart, heureArrivee)),
+                    'véhicule utilitaire': durations.map(duration => leo.calculateutilitaire6m3(duration, distance, withPreReservation)),
                 };
                 break;
             case 'XXL':
                 pricesByCarType = {
-                    'véhicule XXL': durations.map(duration => citiz.calculateXXL(duration, false, distance, heureDepart, heureArrivee)),
-                    'véhicule utilitaire': durations.map(duration => leo.calculateutilitaire6m3(duration, distance, false)),
+                    'véhicule XXL': durations.map(duration => citiz.calculateXXL(duration, withSubscription, distance, heureDepart, heureArrivee)),
+                    'véhicule utilitaire': durations.map(duration => leo.calculateutilitaire6m3(duration, distance, withPreReservation)),
                 };
                 break;
             case 'Tesla':
                 pricesByCarType = {
-                    'véhicule S': durations.map(duration => citiz.calculateS(duration, false, distance, heureDepart, heureArrivee)),
-                    'véhicule M': durations.map(duration => citiz.calculateM(duration, false, distance, heureDepart, heureArrivee)),
-                    'véhicule L': durations.map(duration => citiz.calculateL(duration, false, distance, heureDepart, heureArrivee)),
-                    'véhicule XL': durations.map(duration => citiz.calculateXL(duration, false, distance, heureDepart, heureArrivee)),
-                    'véhicule XXL': durations.map(duration => citiz.calculateXXL(duration, false, distance, heureDepart, heureArrivee)),
-                    'véhicule Tesla': durations.map(duration => leo.calculateTesla(duration, distance, false)),
+                    'véhicule S': durations.map(duration => citiz.calculateS(duration, withSubscription, distance, heureDepart, heureArrivee)),
+                    'véhicule M': durations.map(duration => citiz.calculateM(duration, withSubscription, distance, heureDepart, heureArrivee)),
+                    'véhicule L': durations.map(duration => citiz.calculateL(duration, withSubscription, distance, heureDepart, heureArrivee)),
+                    'véhicule XL': durations.map(duration => citiz.calculateXL(duration, withSubscription, distance, heureDepart, heureArrivee)),
+                    'véhicule XXL': durations.map(duration => citiz.calculateXXL(duration, withSubscription, distance, heureDepart, heureArrivee)),
+                    'véhicule Tesla': durations.map(duration => leo.calculateTesla(duration, distance, withPreReservation)),
                 };
                 break;
             default: 
@@ -153,7 +158,7 @@ const ChartComponent = () => {
                 data: pricesByCarType[carType],
                 borderColor: colors[index % colors.length],
                 backgroundColor: 'rgba(255, 255, 255, 0.5)',
-                fill: false
+                fill: true
             };
         });
 
@@ -174,19 +179,29 @@ const ChartComponent = () => {
                 </div>
                 <div className='text-left text-dark fw-bold'>
                     <p htmlFor="car-size">Choisissez une taille de voiture :</p>
-                </div>
-                <select id="car-size" className="btn btn-outline-dark rounded-5 bi bi-car-front-fill btn-orange fw-bold" onChange={(e) => updateChart(distance)}>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                    <option value="XXL">XXL</option>
-                    <option value="Tesla">Tesla</option>
-                </select>
-                <br />
-                <div className='text-left text-dark fw-bold'>
-                    <p>Distance sélectionnée: <span id="distance-value">{distance}</span> km</p>
-                    <input type="range" id="distance-slider" min="1" max="1000" value={distance} onChange={(e) => updateChart(parseInt(e.target.value))} />
+                
+                    <select id="car-size" className="btn btn-outline-dark rounded-5 bi bi-car-front-fill btn-orange fw-bold" onChange={(e) => updateChart(distance)}>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                        <option value="Tesla">Tesla</option>
+                    </select>
+                    <br />
+                    <div>
+                        <input type="checkbox" id="withSubscription" checked={withSubscription} onChange={() => setWithSubscription(!withSubscription)} />
+                        <label htmlFor="withSubscription">Avec abonnement (Citiz)</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="withPreReservation" checked={withPreReservation} onChange={() => setWithPreReservation(!withPreReservation)} />
+                        <label htmlFor="withPreReservation">Avec pré-réservation (Leo)</label>
+                    </div>
+                    <br />
+                    <div className='text-left text-dark fw-bold'>
+                        <p>Distance sélectionnée: <span id="distance-value">{distance}</span> km</p>
+                        <input type="range" id="distance-slider" min="1" max="1000" value={distance} onChange={(e) => updateChart(parseInt(e.target.value))} />
+                    </div>
                 </div>
             </div>
         </div>
